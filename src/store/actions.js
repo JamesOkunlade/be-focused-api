@@ -134,7 +134,7 @@ export function fetchGoals(authToken) {
   return async function(dispatch) {
       dispatch(requestGoals())
       try {
-          const response = await fetch(`http://localhost:3000/goals`, {
+          const response = await fetch(`${URL}/api/v1/goals`, {
             headers: {
               'Authorization': `Bearer ${authToken}`, // Include your authentication token
               'Content-Type': 'application/json', // Set any other headers you need
@@ -177,7 +177,7 @@ export function fetchGoalById(goalId, authToken) {
   return async function(dispatch) {
       dispatch(requestGoalById())
       try {
-          const response = await fetch(`${URL}/goals/${goalId}`,{
+          const response = await fetch(`${URL}/api/v1/goals/${goalId}`,{
             headers: {
               'Authorization': `Bearer ${authToken}`, // Include your authentication token
               'Content-Type': 'application/json', // Set any other headers you need
@@ -218,7 +218,7 @@ export function createGoal(formData, authToken) {
     dispatch(beginCreatingGoal());
 
     try {
-      const response = await fetch(`${URL}/goals`, {
+      const response = await fetch(`${URL}/api/v1/goals`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -229,7 +229,7 @@ export function createGoal(formData, authToken) {
           description: formData.description,
           priority: formData.priority,
           due_date: formData.due_date,
-          created_by: formData.created_by
+          // created_by: formData.created_by
         }),
       });
   
@@ -266,7 +266,7 @@ export function updateGoal(formData, authToken) {
     dispatch(beginUpdatingGoal());
 
     try {
-      const response = await fetch(`${URL}/goals/${formData.id}`, {
+      const response = await fetch(`${URL}/api/v1/goals/${formData.id}`, {
         method: 'PUT', // Use PUT instead of POST for updates
         headers: {
           'Content-Type': 'application/json',
@@ -293,7 +293,7 @@ export function updateGoal(formData, authToken) {
 export function markComplete(goalId, done, authToken) {
   return async function (dispatch) {
     try {
-      const response = await fetch(`${URL}/goals/${goalId}`, {
+      const response = await fetch(`${URL}/api/v1/goals/${goalId}`, {
         method: 'PATCH', // Use PATCH for partial updates
         headers: {
           'Content-Type': 'application/json',
@@ -324,7 +324,7 @@ function removing(id) {
 export function remove(goalId, authToken) {
   return async function(dispatch) {
     try {
-      const response = await fetch(`${URL}/goals/${goalId}`, {
+      const response = await fetch(`${URL}/api/v1/goals/${goalId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

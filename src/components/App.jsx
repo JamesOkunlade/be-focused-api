@@ -17,7 +17,8 @@ const App = () => {
 
   return (
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
+        {/* {(window.location.pathname !== '/login' && window.location.pathname !== '/signup') && <Header />} */}
         <Routes>
           <Route path="/login" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />

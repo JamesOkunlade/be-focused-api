@@ -6,6 +6,12 @@ import Header from '../components/Header';
 const About = () => {
   return (
     <>
+      <nav className="navbar shadow-sm bg-body-tertiary px-4 sticky-top w-100">
+          <div className="container-fluid">
+            <h3 className="navbar-brand">BeFocused</h3>
+          </div>
+        </nav>
+
       <div className="container-fluid">
         <div className="row vh-100">
           <div className="col-7 p-5">
